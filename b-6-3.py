@@ -8,7 +8,10 @@
 # global aは、グローバル変数（関数の外で定義された変数）のaを関数の中でも使うための宣言です。
 
 # while文は、繰り返しを行う条件を指定し、その条件が成り立っている間、同じ処理を繰り返し実行します。
+# （ヒント：どちら方向に動いているかを覚えておく変数が必要になります。）
 # ---------------------------------------------------------
+
+# 変数を二つ用意する？。＋方向に進む変数のaが２００の位置に達した時、ー方向に進む変数をaが０になるまで繰り返す、というイメージ。
 
 import pyxel
 pyxel.init(200,200)
@@ -18,6 +21,13 @@ def update():
     global a
     a += 1
 
+def update_minus():
+    global a
+    a -= 1
+
+# def update_total():
+#     global a
+
 def draw():
     global a
     pyxel.cls(7)
@@ -25,3 +35,6 @@ def draw():
     pyxel.circ(a, a, 10, 0)
 
 pyxel.run(update, draw)
+# pyxel.run(update_minus, draw)
+
+# pyxel.run(update_total, draw)
