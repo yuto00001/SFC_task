@@ -11,30 +11,26 @@
 # （ヒント：どちら方向に動いているかを覚えておく変数が必要になります。）
 # ---------------------------------------------------------
 
-# 変数を二つ用意する？。＋方向に進む変数のaが２００の位置に達した時、ー方向に進む変数をaが０になるまで繰り返す、というイメージ。
+# 今回も a %= 200 を応用した処理を施すものと考えていたが、違った。a %= 200 を活かすには、二つの方向に進むそれぞれの処理を、条件分岐によって選択させなければならないが、右下への処理も左上へ向かう処理も同様に0−200の領域を用いているので分岐させることができなかった。そこで新たな変数directionを導入し、if文と掛け合わせ、正数と負数をつくり、これをaに掛けることで200から１ずつ０へ向かう処理を実現した。
 
 import pyxel
 pyxel.init(200,200)
 a = 0
+direction = 1
 
 def update():
     global a
-    a += 1
-
-def update_minus():
-    global a
-    a -= 1
-
-# def update_total():
-#     global a
+    global direction
+    a += 1 * direction
+    if a >= 200:
+        direction = -1
+    elif a <= 0:
+        direction = 1
 
 def draw():
     global a
     pyxel.cls(7)
-    a %= 200
+    # a %= 200
     pyxel.circ(a, a, 10, 0)
 
 pyxel.run(update, draw)
-# pyxel.run(update_minus, draw)
-
-# pyxel.run(update_total, draw)
