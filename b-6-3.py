@@ -30,7 +30,6 @@ def update():
 def draw():
     global a
     pyxel.cls(7)
-    # a %= 200
     pyxel.circ(a, a, 10, 0)
 
 pyxel.run(update, draw)
